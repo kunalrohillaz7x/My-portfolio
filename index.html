@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kunal &mdash; Backend Developer</title>
+<title>Kunal — Backend Developer</title>
 <style>
   :root{
     --grey-1:#7d858c;
@@ -17,9 +17,12 @@
     --accent:#1d4ed8;
     --accent-hover:#1e40af;
     --accent-soft:#eff6ff;
+    --forest:#0c2340;
     --royal:#1d4ed8;
     --royal-dark:#0c2340;
+    --forest-dark:#061325;
     --line: rgba(255,255,255,0.12);
+    --line-green: rgba(29,78,216,0.25);
     --line-blue: rgba(29,78,216,0.25);
     --line-dark: rgba(6,19,37,0.1);
   }
@@ -50,7 +53,7 @@
   .topbar .tag{opacity:.75; text-align:right;}
 
 
-  /* ---------- glyph portal (Royal Blue & White) ---------- */
+  /* ---------- glyph portal ---------- */
   #gp-portal{--gp-paper:#fff;--gp-ink:#061325;--gp-field:#0c2340;--gp-foreground:#fbfbfa;position:relative;isolation:isolate;background:var(--gp-paper);color:var(--gp-ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
   #gp-portal>[data-gp-viewport]{position:absolute;inset:0 auto auto 0;height:100vh;height:100svh;width:0;pointer-events:none;visibility:hidden;}
   #gp-portal [data-gp-pin]{position:relative;height:var(--gp-height,100svh);overflow:clip;isolation:isolate;container-type:size;}
@@ -91,6 +94,7 @@
   @media(prefers-reduced-motion:reduce){#gp-portal [data-gp-pin]{position:relative!important;} #gp-portal [data-gp-content]{margin-top:0!important;opacity:1!important;background:var(--gp-field)!important;min-height:0;padding-block:64px;} #gp-portal [data-gp-caption]{opacity:1!important;}}
   @media(prefers-reduced-motion:reduce){#gp-portal [data-gp-hint]{display:none;}}
 
+  
   /* hero portrait photo behind text */
   #gp-portal .hero-photo-wrap {
     position: absolute;
@@ -118,7 +122,7 @@
   }
   #gp-portal [data-gp-field] {
     z-index: 1;
-    filter: drop-shadow(0 4px 25px rgba(29,78,216,0.22));
+    filter: drop-shadow(0 4px 20px rgba(12,35,64,0.22));
   }
   #gp-portal [data-gp-art] {
     z-index: 1;
@@ -137,7 +141,6 @@
   [data-gp-support] {
     display: none !important;
   }
-
   /* portal demo overlay */
   #gp-portal [data-gp-caption]{inset:calc(var(--gp-word-bottom,50%) + 82px) 24px auto;justify-content:center;}
   #gp-portal [data-gp-hint]{display:none;}
@@ -149,13 +152,18 @@
   [data-gp-header]{position:absolute;inset:clamp(24px,4.5cqw,48px) clamp(24px,5cqw,64px) auto;display:flex;align-items:center;justify-content:space-between;gap:20px;}
   [data-gp-logo]{font-size:19px;font-weight:600;letter-spacing:-.065em;color:#061325;}
   [data-gp-category]{font-size:12px;line-height:1.5;color:#64748b;}
+  [data-gp-eyebrow]{position:absolute;inset:auto 24px calc(100% - var(--gp-word-top,35%) + 32px);margin:0;text-align:center;font-size:clamp(16px,2.5vw,22px);font-weight:300;line-height:1.5;letter-spacing:.005em;color:#71766f;}
+  [data-gp-support]{position:absolute;inset:calc(var(--gp-word-bottom,50%) + 32px) 24px auto;margin:0;text-align:center;font-size:16px;font-weight:400;line-height:1.5;color:#646a63;}
   [data-gp-scroll-hint]{position:absolute;inset:auto 24px 7%;text-align:center;color:#64748b;font-size:11px;letter-spacing:.01em;}
   @media(any-pointer:coarse){[data-gp-scroll-hint]{bottom:13%;}}
-  @container(max-width:450px){[data-gp-category]{max-width:12ch;text-align:right;}#gp-portal [data-gp-caption]{top:calc(var(--gp-word-bottom,50%) + 76px);}}
-  @container(max-height:479px){[data-gp-header]{top:18px;}#gp-portal [data-gp-caption]{top:calc(var(--gp-word-bottom,50%) + 60px);}[data-gp-scroll-hint]{display:none;}}
+  @container(max-width:450px){[data-gp-category]{max-width:12ch;text-align:right;}[data-gp-eyebrow]{font-size:14px;}[data-gp-support]{font-size:14px;}#gp-portal [data-gp-caption]{top:calc(var(--gp-word-bottom,50%) + 76px);}}
+  @container(max-height:479px){[data-gp-header]{top:18px;}[data-gp-support]{top:calc(var(--gp-word-bottom,50%) + 16px);}#gp-portal [data-gp-caption]{top:calc(var(--gp-word-bottom,50%) + 60px);}[data-gp-scroll-hint]{display:none;}}
   #gp-portal [data-gp-content]{padding:5.5rem clamp(1.25rem,5cqw,5rem) 6.5rem;font-family:inherit;}
   #gp-portal section,#gp-portal [data-gp-caption]{font-family:inherit;}
 
+
+  /* ---------- section shell ---------- */
+  section{padding:120px 5vw;}
   .eyebrow{
     text-transform:uppercase; font-size:11.5px; letter-spacing:.14em; font-weight:600; color:var(--muted); margin-bottom:18px;
   }
@@ -268,9 +276,9 @@
     opacity:0; transition:opacity .5s ease;
   }
   .status-line.visible{opacity:1;}
-  .live-dot{background:#38bdf8; box-shadow:0 0 0 0 rgba(56,189,248,.6);
-    width:7px; height:7px; border-radius:50%; background:#5fd97a;
-    box-shadow:0 0 0 0 rgba(95,217,122,.6);
+  .live-dot{
+    width:7px; height:7px; border-radius:50%; background:#38bdf8;
+    box-shadow:0 0 0 0 rgba(56,189,248,.6);
     animation:pulseDot 1.8s ease-out infinite;
   }
   @keyframes pulseDot{
@@ -280,7 +288,7 @@
   }
   @media (prefers-reduced-motion: reduce){
     .term-cursor{animation:none;}
-    .live-dot{background:#38bdf8; box-shadow:0 0 0 0 rgba(56,189,248,.6);animation:none;}
+    .live-dot{animation:none;}
   }
 
   /* ---------- skills (dark) ---------- */
@@ -346,6 +354,7 @@
     transition:transform .35s ease, background .35s ease, box-shadow .35s ease;
     cursor:pointer;
     border:none; color:#ffffff; font-family:inherit;
+    background:#1d4ed8;
     box-shadow:0 8px 24px rgba(29,78,216,.4);
   }
   .get-in-touch:hover{transform:scale(1.06); background:#2563eb; box-shadow:0 12px 32px rgba(37,99,235,.6);}
@@ -375,7 +384,7 @@
     border-top:1px solid rgba(29,78,216,0.22);
   }
   .footer-row-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;}
-  .footer-label{font-size:14px; opacity:.75;}
+  .footer-label{font-size:14px; opacity:.8; color:#a7f3d0;}
   .footer-arrow{
     width:36px;height:36px;border-radius:50%;background:#1d4ed8;color:#ffffff;
     display:flex;align-items:center;justify-content:center; font-size:14px;
@@ -388,9 +397,9 @@
 
   ::selection{background:#1d4ed8; color:#ffffff;}
 
-  /* ---------- intro loader ---------- */
-  .intro-loader{
-    position:fixed; inset:0; z-index:999;
+
+  /* ---------- animations ---------- */
+  @keyframes fadeUp{
     from{opacity:0; transform:translateY(24px);}
     to{opacity:1; transform:translateY(0);}
   }
@@ -402,9 +411,9 @@
     from{opacity:0;}
     to{opacity:0.55;}
   }
-  .hero-top-row{animation:fadeUp .8s cubic-bezier(.16,1,.3,1) .1s both; animation-play-state:paused;}
-  .hero-title{animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .25s both; animation-play-state:paused;}
-  .hero-photo-wrap{animation:fadeInPhoto 1.2s ease .4s both; animation-play-state:paused;}
+
+  .reveal{
+    opacity:0; transform:translateY(28px);
     transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
   }
   .reveal.visible{opacity:1; transform:translateY(0);}
@@ -420,10 +429,10 @@
 
 
   /* =========================================================
-     MOBILE RESPONSIVENESS OVERHAUL (Royal Blue & White)
+     MOBILE RESPONSIVENESS OVERHAUL
      ========================================================= */
   @media (max-width: 768px) {
-    /* Fixed Topbar - frosted glass */
+    /* Fixed Topbar - sleek frosted glass with no content overlap */
     .topbar {
       padding: 14px 5vw;
       background: rgba(6, 19, 37, 0.9);
@@ -460,8 +469,6 @@
       min-height: 42px;
       padding: 0 20px;
       font-size: 12.5px;
-      background: #0c2340;
-      border: 1px solid #1d4ed8;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
     #gp-portal [data-gp-touch-picker] {
@@ -617,18 +624,28 @@
     }
   }
 
+  @media (max-width: 420px) {
+    .contact-details {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .get-in-touch {
+      width: 100px;
+      height: 100px;
+      font-size: 12px;
+    }
+  }
+
 </style>
 </head>
 <body>
 
-  </div>
 
   <div class="topbar">
-    <span class="brand">&copy; Code by Kunal</span>
+    <span class="brand">© Code by Kunal</span>
     <span class="tag">Backend developer building fast, reliable APIs<br>and the systems that quietly hold everything together.</span>
   </div>
 
-  <!-- HERO -->
 
   <!-- GLYPH PORTAL HERO -->
   <section id="gp-portal" aria-label="KUNAL" style="--gp-length:2.4;--gp-characters:5;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
@@ -666,7 +683,9 @@
         <option value="4">5 · L</option>
       </select></label>
       <div data-gp-front>
-        <div data-gp-header><span data-gp-logo>&copy; Code by Kunal</span><span data-gp-category>Backend developer building fast,<br>reliable APIs</span></div>
+        <div data-gp-header><span data-gp-logo>© Code by Kunal</span><span data-gp-category>Backend developer building fast,<br>reliable APIs</span></div>
+        
+        <p data-gp-support>Follow your curiosity.</p>
         <span data-gp-scroll-hint>Scroll for a closer look ↓</span>
       </div>
       <span data-gp-fallback aria-hidden="true" style="font-family:'Arial Black','Arial',sans-serif;font-weight:900">KUNAL</span>
@@ -709,7 +728,7 @@
         <p>The fusion of Python, FastAPI, and PostgreSQL is where I feel most
         at home — designing APIs, modelling data, and solving problems with
         Data Structures & Algorithms in C++ on the side.</p>
-        <a class="cta-link" href="#skills">More about me &rarr;</a>
+        <a class="cta-link" href="#skills">More about me →</a>
       </div>
     </div>
   </section>
@@ -742,7 +761,7 @@
           <span class="stack-chip">REST API</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/">View on GitHub</a>
+          <a href="https://github.com/kunalrohillaz7x">View on GitHub</a>
           <a class="secondary" href="https://vercel.com/">Live on Vercel</a>
         </div>
       </div>
@@ -886,13 +905,13 @@
       <a class="get-in-touch" href="mailto:kunal9255r@gmail.com">Get in touch</a>
     </div>
     <div class="social-row">
-      <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+      <a href="https://github.com/kunalrohillaz7x" target="_blank" rel="noopener" aria-label="GitHub">
         <svg style="color:#ffffff" width="18" height="18" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span>
       </a>
-      <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/kunal-rohilla-2b9501377/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#0A66C2"/><text x="12" y="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="12.5" fill="#ffffff" text-anchor="middle">in</text></svg><span>LinkedIn</span>
       </a>
-      <a href="https://leetcode.com/" target="_blank" rel="noopener" aria-label="LeetCode">
+      <a href="https://leetcode.com/u/Kunal_Rohilla/" target="_blank" rel="noopener" aria-label="LeetCode">
         <svg style="color:#ffffff" width="18" height="18" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg><span>LeetCode</span>
       </a>
       <a href="https://codolio.com/profile/kunalrohilla" target="_blank" rel="noopener" aria-label="Codolio">
@@ -910,31 +929,7 @@
   </div>
 
   <script>
-    // ---------- intro loader ----------
-    (function(){
-      const loader = document.getElementById('introLoader');
-      const body = document.body;
-      if(!loader){ body.classList.remove('intro-active'); body.classList.add('intro-done'); }
-      else {
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if(reduceMotion){
-          loader.classList.add('intro-remove');
-          body.classList.remove('intro-active');
-          body.classList.add('intro-done');
-        } else {
-          setTimeout(() => {
-            loader.classList.add('intro-hide');
-            body.classList.remove('intro-active');
-            body.classList.add('intro-done');
-          }, 1500);
-          loader.addEventListener('transitionend', (e) => {
-            if(e.propertyName === 'transform'){
-              loader.classList.add('intro-remove');
-            }
-          });
-        }
-      }
-    })();
+
 
     const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
     const io = new IntersectionObserver((entries) => {
